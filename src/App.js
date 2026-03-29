@@ -839,7 +839,7 @@ export default function SaptaashwaWebsite() {
           <div>
             <div className="reveal">
               <div className="gold-line"><p className="section-label">Get In Touch</p></div>
-              <h2 className="contact-heading">Let's Build <span>Something</span> Together</h2>
+              <h2 className="contact-heading">Let's Provide <span>World What Truly</span> Deserves</h2>
             </div>
             <div className="contact-items">
               {[
