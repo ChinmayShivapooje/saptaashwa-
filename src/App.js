@@ -11,7 +11,7 @@ const LOGO_PATH      = "/logo.png";
 const BROCHURE_PATH  = "/SAPTAASHWA_ENTERPRISES_PORTFOLIO.pdf"; // ← rename if needed
 
 const style = `
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@300;400;500;600&display=swap');
 
   /* ── Gotham via system fallback (or self-hosted) ── */
   /* If you have Gotham licensed: place gotham.woff2 in /public/fonts/ and uncomment below */
@@ -48,6 +48,7 @@ const style = `
     --font-company:   'Gotham', 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
     --font-body:      'Cormorant Garamond', serif;
     --font-ui:        'Montserrat', sans-serif;
+    --font-opensans:  'Open Sans', sans-serif;
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -431,8 +432,7 @@ const style = `
   .contact-item { display:flex; gap:18px; align-items:flex-start; }
   .contact-item-icon { width:42px; height:42px; flex-shrink:0; border:1px solid rgba(201,168,76,.2); display:flex; align-items:center; justify-content:center; font-size:1.05rem; color:var(--gold); }
   .contact-item-text span { display:block; font-family:var(--font-ui); font-size:.58rem; letter-spacing:.24em; text-transform:uppercase; color:var(--teal-light); margin-bottom:5px; }
-
-  .contact-form { display:flex; flex-direction:column; gap:14px; }
+  .contact-item.email-item .contact-item-text p { font-family: 'Open Sans', sans-serif !important; font-size: .92rem !important; letter-spacing: .02em; } { display:flex; flex-direction:column; gap:14px; }
   .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   .form-group { display:flex; flex-direction:column; }
   .form-group label { font-family:var(--font-ui); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:var(--white-dim); margin-bottom:7px; }
@@ -589,7 +589,7 @@ export default function SaptaashwaWebsite() {
     setTimeout(() => setFormStatus(null), 6000);
   };
 
-  const navLinks = ["About","Services","Approach","Partnership","Contact"];
+  const navLinks = ["About","Services","Approach","Partnership","Contact Us"];
 
   return (
     <>
@@ -647,7 +647,7 @@ export default function SaptaashwaWebsite() {
           <p className="hero-eyebrow">Distribution &amp; Marketing All Over Karnataka</p>
           <h1 className="hero-title">SAPTAASHWA</h1>
           <div className="hero-title-sub">ENTERPRISES</div>
-          <p className="hero-subtitle">Harnessing Strength, Delivering Success</p>
+          <p className="hero-subtitle">HARNESSING STRENGTH, DELIVERING SUCCESS</p>
           <div className="hero-cta">
             <a href="#about"   className="btn-primary"><span>Discover More</span></a>
             <a href="#contact" className="btn-outline">Partner With Us</a>
@@ -697,8 +697,8 @@ export default function SaptaashwaWebsite() {
       {/* ══ BROCHURE DOWNLOAD BANNER ══ */}
       <div className="brochure-banner reveal">
         <div className="brochure-inner">
-          <div className="brochure-icon" style={{width:"80px",height:"80px",border:"1px solid rgba(201,168,76,.3)",overflow:"hidden",flexShrink:0,padding:0}}>
-            <img src="/1_jpg.jpeg" alt="Brochure Cover" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}/>
+          <div style={{width:"110px",height:"155px",border:"2px solid rgba(201,168,76,.4)",overflow:"hidden",flexShrink:0,borderRadius:"2px",boxShadow:"0 8px 30px rgba(201,168,76,.2)"}}>
+            <img src="/1_jpg.jpeg" alt="Brochure Cover" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top center",display:"block"}}/>
           </div>
           <div className="brochure-text">
             <h3>Download Our Brochure</h3>
@@ -839,17 +839,17 @@ export default function SaptaashwaWebsite() {
           <div>
             <div className="reveal">
               <div className="gold-line"><p className="section-label">Get In Touch</p></div>
-              <h2 className="contact-heading">Together, <span>Let's Deliver</span> What the World Truly Deserves</h2>
+              <h2 className="contact-heading">Together,  <span>Let's Deliver</span> What the World Truly Deserves</h2>
             </div>
             <div className="contact-items">
               {[
-                {icon:"📍",label:"Address",  text:"2nd Floor, Chaya Nilaya, 4th Cross,\nHosamane Extension, Shivamogga – 577201"},
+                {icon:"📍",label:"Address",  text:"2nd Floor, Chaya Nilaya,\n4th Cross, Hosamane Extension,\nShivamogga – 577201"},
                 {icon:"📞",label:"Phone",    text:"+91 91870 46927"},
                 {icon:"💬",label:"WhatsApp", text:"+91 91870 46927"},
-                {icon:"✉️",label:"Email",    text:"saptaashwaenterprises@gmail.com"},
+                {icon:"✉️",label:"Email",    text:"saptaashwaenterprises@gmail.com", isEmail: true},
                 {icon:"🏛️",label:"GST",      text:"29ASGPC3225P1ZI"},
               ].map((item,i)=>(
-                <div className={`contact-item reveal reveal-delay-${i}`} key={item.label}>
+                <div className={`contact-item reveal reveal-delay-${i}${item.isEmail ? " email-item" : ""}`} key={item.label}>
                   <div className="contact-item-icon">{item.icon}</div>
                   <div className="contact-item-text">
                     <span>{item.label}</span>
@@ -919,7 +919,7 @@ export default function SaptaashwaWebsite() {
           <img src={LOGO_PATH} alt="Saptaashwa" className="footer-logo"/>
           <div className="footer-brand">SAPTAASHWA ENTERPRISES</div>
         </div>
-        <div className="footer-tagline">Harnessing Strength, Delivering Success</div>
+        <div className="footer-tagline">HARNESSING STRENGTH, DELIVERING SUCCESS</div>
         <div style={{display:"flex",alignItems:"center",gap:"24px",flexWrap:"wrap"}}>
           <a
             href={BROCHURE_PATH}
@@ -942,3 +942,4 @@ export default function SaptaashwaWebsite() {
     </>
   );
 }
+ 
