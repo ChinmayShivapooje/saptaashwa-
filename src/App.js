@@ -14,7 +14,6 @@ const style = `
   @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@300;400;500;600&display=swap');
 
   /* ── Gotham via system fallback (or self-hosted) ── */
-  /* If you have Gotham licensed: place gotham.woff2 in /public/fonts/ and uncomment below */
   /*
   @font-face {
     font-family: 'Gotham';
@@ -228,11 +227,21 @@ const style = `
     background: linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
+
+  /* ── CHANGED: tagline gold small-caps ── */
   .hero-subtitle {
-    font-family: var(--font-body); font-size: clamp(.9rem,2vw,1.25rem);
-    font-weight: 300; font-style: Cinzel Decorative; letter-spacing: .15em; color: var(--white-dim);
-    margin-bottom: 42px; animation: fadeUp 1s ease .9s both;
+    font-family: var(--font-content);
+    font-size: clamp(.72rem, 1.3vw, .95rem);
+    font-weight: 600;
+    font-style: normal;
+    font-variant: small-caps;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 42px;
+    animation: fadeUp 1s ease .9s both;
   }
+
   .hero-cta {
     display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
     animation: fadeUp 1s ease 1.2s both;
@@ -432,7 +441,8 @@ const style = `
   .contact-item { display:flex; gap:18px; align-items:flex-start; }
   .contact-item-icon { width:42px; height:42px; flex-shrink:0; border:1px solid rgba(201,168,76,.2); display:flex; align-items:center; justify-content:center; font-size:1.05rem; color:var(--gold); }
   .contact-item-text span { display:block; font-family:var(--font-ui); font-size:.58rem; letter-spacing:.24em; text-transform:uppercase; color:var(--teal-light); margin-bottom:5px; }
-  .contact-item.email-item .contact-item-text p { font-family: 'Open Sans', sans-serif !important; font-size: .92rem !important; letter-spacing: .02em; } { display:flex; flex-direction:column; gap:14px; }
+  .contact-item.email-item .contact-item-text p { font-family: 'Open Sans', sans-serif !important; font-size: .92rem !important; letter-spacing: .02em; }
+  .contact-form { display:flex; flex-direction:column; gap:14px; }
   .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
   .form-group { display:flex; flex-direction:column; }
   .form-group label { font-family:var(--font-ui); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:var(--white-dim); margin-bottom:7px; }
@@ -461,7 +471,10 @@ const style = `
   .footer-left { display:flex; align-items:center; gap:14px; }
   .footer-logo { height:36px; width:auto; filter:drop-shadow(0 0 6px rgba(201,168,76,.35)); }
   .footer-brand { font-family:var(--font-company); font-size:.85rem; font-weight:700; letter-spacing:.28em; color:var(--gold); text-transform:uppercase; }
-  .footer-tagline { font-family:var(--font-body); font-style:Cinzel Decorative; font-size:.9rem; color:var(--white-dim); letter-spacing:.1em; }
+
+  /* ── CHANGED: footer tagline gold small-caps ── */
+  .footer-tagline { font-family:var(--font-content); font-style:normal; font-variant:small-caps; font-weight:600; font-size:.82rem; color:var(--gold); letter-spacing:.38em; text-transform:uppercase; }
+
   .footer-copy { font-family:var(--font-ui); font-size:.58rem; letter-spacing:.13em; color:rgba(245,240,232,.28); }
 
   /* ══ REVEAL ══ */
@@ -523,7 +536,6 @@ const useReveal = () => {
   }, []);
 };
 
-// ── Download icon SVG ─────────────────────────────────────────────────────────
 const DownloadIcon = ({ size = 16 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -603,12 +615,8 @@ export default function SaptaashwaWebsite() {
         {navLinks.map(l => (
           <a key={l} href={`#${l.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{l}</a>
         ))}
-        <a
-          href={BROCHURE_PATH}
-          download="Saptaashwa_Enterprises_Brochure.pdf"
-          className="mobile-download"
-          onClick={() => setMenuOpen(false)}
-        >
+        <a href={BROCHURE_PATH} download="Saptaashwa_Enterprises_Brochure.pdf"
+          className="mobile-download" onClick={() => setMenuOpen(false)}>
           <DownloadIcon size={14} /> Download Brochure
         </a>
       </div>
@@ -625,11 +633,7 @@ export default function SaptaashwaWebsite() {
         <ul className="nav-links">
           {navLinks.map(l => <li key={l}><a href={`#${l.toLowerCase()}`}>{l}</a></li>)}
         </ul>
-        <a
-          href={BROCHURE_PATH}
-          download="Saptaashwa_Enterprises_Brochure.pdf"
-          className="nav-download"
-        >
+        <a href={BROCHURE_PATH} download="Saptaashwa_Enterprises_Brochure.pdf" className="nav-download">
           <DownloadIcon size={13} /> Brochure
         </a>
         <button className={`hamburger ${menuOpen ? "open" : ""}`}
@@ -651,11 +655,7 @@ export default function SaptaashwaWebsite() {
           <div className="hero-cta">
             <a href="#about"   className="btn-primary"><span>Discover More</span></a>
             <a href="#contact" className="btn-outline">Partner With Us</a>
-            <a
-              href={BROCHURE_PATH}
-              download="Saptaashwa_Enterprises_Brochure.pdf"
-              className="btn-download"
-            >
+            <a href={BROCHURE_PATH} download="Saptaashwa_Enterprises_Brochure.pdf" className="btn-download">
               <DownloadIcon size={14}/> <span>Brochure</span>
             </a>
           </div>
@@ -705,11 +705,7 @@ export default function SaptaashwaWebsite() {
             <p>Get the complete Saptaashwa Enterprises portfolio — our services, approach, and partnership details in one document.</p>
           </div>
           <div className="brochure-actions">
-            <a
-              href={BROCHURE_PATH}
-              download="Saptaashwa_Enterprises_Brochure.pdf"
-              className="btn-primary"
-            >
+            <a href={BROCHURE_PATH} download="Saptaashwa_Enterprises_Brochure.pdf" className="btn-primary">
               <span style={{display:"flex",alignItems:"center",gap:"8px"}}>
                 <DownloadIcon size={14}/> Download PDF
               </span>
@@ -822,11 +818,7 @@ export default function SaptaashwaWebsite() {
           </div>
           <div className="reveal reveal-delay-3" style={{display:"flex",gap:"16px",justifyContent:"center",flexWrap:"wrap"}}>
             <a href="#contact" className="btn-primary"><span>Start a Conversation</span></a>
-            <a
-              href={BROCHURE_PATH}
-              download="Saptaashwa_Enterprises_Brochure.pdf"
-              className="btn-download"
-            >
+            <a href={BROCHURE_PATH} download="Saptaashwa_Enterprises_Brochure.pdf" className="btn-download">
               <DownloadIcon size={14}/> <span>Download Brochure</span>
             </a>
           </div>
@@ -839,7 +831,7 @@ export default function SaptaashwaWebsite() {
           <div>
             <div className="reveal">
               <div className="gold-line"><p className="section-label">Get In Touch</p></div>
-              <h2 className="contact-heading">Together,  <span>Let's Deliver</span> What the World Truly Deserves</h2>
+              <h2 className="contact-heading">Together, <span>Let's Deliver</span> What the World Truly Deserves</h2>
             </div>
             <div className="contact-items">
               {[
@@ -921,19 +913,11 @@ export default function SaptaashwaWebsite() {
         </div>
         <div className="footer-tagline">HARNESSING STRENGTH, DELIVERING SUCCESS</div>
         <div style={{display:"flex",alignItems:"center",gap:"24px",flexWrap:"wrap"}}>
-          <a
-            href={BROCHURE_PATH}
-            download="Saptaashwa_Enterprises_Brochure.pdf"
-            style={{
-              display:"flex",alignItems:"center",gap:"6px",
-              fontFamily:"var(--font-ui)",fontSize:".6rem",
-              letterSpacing:".15em",textTransform:"uppercase",
-              color:"var(--gold)",textDecoration:"none",
-              transition:"opacity .3s",
-            }}
+          <a href={BROCHURE_PATH} download="Saptaashwa_Enterprises_Brochure.pdf"
+            style={{display:"flex",alignItems:"center",gap:"6px",fontFamily:"var(--font-ui)",fontSize:".6rem",
+              letterSpacing:".15em",textTransform:"uppercase",color:"var(--gold)",textDecoration:"none",transition:"opacity .3s"}}
             onMouseOver={e=>e.currentTarget.style.opacity=".7"}
-            onMouseOut={e=>e.currentTarget.style.opacity="1"}
-          >
+            onMouseOut={e=>e.currentTarget.style.opacity="1"}>
             <DownloadIcon size={12}/> Brochure
           </a>
           <div className="footer-copy">© 2026 Saptaashwa Enterprises. All rights reserved.</div>
@@ -942,4 +926,3 @@ export default function SaptaashwaWebsite() {
     </>
   );
 }
- 
