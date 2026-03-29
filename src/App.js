@@ -205,9 +205,8 @@ const style = `
   .hero-logo {
     width: clamp(130px, 22vw, 210px); height: auto; margin: 0 auto 28px;
     filter: drop-shadow(0 0 32px rgba(201,168,76,.55));
-    animation: fadeUp 1s ease .1s both, float 4s ease-in-out 1.2s infinite;
+    animation: fadeUp 1s ease .1s both;
   }
-  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
   .hero-eyebrow {
     font-family: var(--font-ui); font-size: .65rem; font-weight: 500;
     letter-spacing: .45em; text-transform: uppercase; color: var(--teal-light);
@@ -230,7 +229,7 @@ const style = `
   }
   .hero-subtitle {
     font-family: var(--font-body); font-size: clamp(.9rem,2vw,1.25rem);
-    font-weight: 300; font-style: italic; letter-spacing: .15em; color: var(--white-dim);
+    font-weight: 300; font-style: Cinzel Decorative; letter-spacing: .15em; color: var(--white-dim);
     margin-bottom: 42px; animation: fadeUp 1s ease .9s both;
   }
   .hero-cta {
@@ -334,7 +333,6 @@ const style = `
   .about-logo-img {
     width: clamp(160px,22vw,260px); height: auto; position: relative; z-index: 2;
     filter: drop-shadow(0 0 40px rgba(201,168,76,.45));
-    animation: float 4s ease-in-out infinite;
   }
   .about-stats { display: flex; gap: 36px; margin-top: 36px; flex-wrap: wrap; }
   .stat { border-left: 2px solid var(--gold); padding-left: 18px; }
@@ -463,7 +461,7 @@ const style = `
   .footer-left { display:flex; align-items:center; gap:14px; }
   .footer-logo { height:36px; width:auto; filter:drop-shadow(0 0 6px rgba(201,168,76,.35)); }
   .footer-brand { font-family:var(--font-company); font-size:.85rem; font-weight:700; letter-spacing:.28em; color:var(--gold); text-transform:uppercase; }
-  .footer-tagline { font-family:var(--font-body); font-style:italic; font-size:.9rem; color:var(--white-dim); letter-spacing:.1em; }
+  .footer-tagline { font-family:var(--font-body); font-style:Cinzel Decorative; font-size:.9rem; color:var(--white-dim); letter-spacing:.1em; }
   .footer-copy { font-family:var(--font-ui); font-size:.58rem; letter-spacing:.13em; color:rgba(245,240,232,.28); }
 
   /* ══ REVEAL ══ */
@@ -646,7 +644,7 @@ export default function SaptaashwaWebsite() {
         <div className="hero-glow" />
         <div className="hero-content">
           <img src={LOGO_PATH} alt="Saptaashwa Enterprises" className="hero-logo" />
-          <p className="hero-eyebrow">Distribution &amp; Marketing · Shivamogga, Karnataka</p>
+          <p className="hero-eyebrow">Distribution &amp; Marketing All Over Karnataka</p>
           <h1 className="hero-title">SAPTAASHWA</h1>
           <div className="hero-title-sub">ENTERPRISES</div>
           <p className="hero-subtitle">Harnessing Strength, Delivering Success</p>
@@ -699,7 +697,9 @@ export default function SaptaashwaWebsite() {
       {/* ══ BROCHURE DOWNLOAD BANNER ══ */}
       <div className="brochure-banner reveal">
         <div className="brochure-inner">
-          <div className="brochure-icon">📄</div>
+          <div className="brochure-icon" style={{width:"80px",height:"80px",border:"1px solid rgba(201,168,76,.3)",overflow:"hidden",flexShrink:0,padding:0}}>
+            <img src="/1_jpg.jpeg" alt="Brochure Cover" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}/>
+          </div>
           <div className="brochure-text">
             <h3>Download Our Brochure</h3>
             <p>Get the complete Saptaashwa Enterprises portfolio — our services, approach, and partnership details in one document.</p>
@@ -839,7 +839,7 @@ export default function SaptaashwaWebsite() {
           <div>
             <div className="reveal">
               <div className="gold-line"><p className="section-label">Get In Touch</p></div>
-              <h2 className="contact-heading">Let's Provide <span>World What Truly</span> Deserves</h2>
+              <h2 className="contact-heading">Together, <span>Let's Deliver</span> What the World Truly Deserves</h2>
             </div>
             <div className="contact-items">
               {[
