@@ -231,11 +231,11 @@ const style = `
   /* ── CHANGED: tagline gold small-caps ── */
   .hero-subtitle {
     font-family: var(--font-content);
-    font-size: clamp(.72rem, 1.3vw, .95rem);
+    font-size: clamp(.5rem, 0.8vw, .65rem);
     font-weight: 600;
     font-style: normal;
     font-variant: small-caps;
-    letter-spacing: .4em;
+    letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 42px;
